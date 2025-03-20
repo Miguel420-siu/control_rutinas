@@ -12,3 +12,6 @@ Route::get('/ruta', function(){
 Route::get('/ruta/post', function(){
     return "POST ok";
 });
+Route::get('/rutinas', function(){
+    return view('rutinas');
+});
