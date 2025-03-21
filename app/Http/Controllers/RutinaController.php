@@ -20,7 +20,7 @@ class RutinaController extends Controller
      */
     public function create()
     {
-        //
+       return view('rutinas.index');
     }
 
     /**
@@ -28,7 +28,20 @@ class RutinaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // Validar los datos del formulario
+    $request->validate([
+        'nombre' => 'required|string|max:255',
+        'descripcion' => 'required|string|max:255',
+        'duracion' => 'required|integer',
+        'nivel' => 'required|string',
+        'objetivo' => 'required|string|max:255',
+    ]);
+
+    // Guardar los datos en la base de datos
+    Rutina::create($request->all());
+
+    // Redirigir al usuario con un mensaje de éxito
+    return view('rutinas.almacenada');
     }
 
     /**
